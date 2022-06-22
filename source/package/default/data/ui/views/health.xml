@@ -1,0 +1,54 @@
+<dashboard theme="dark" version="1.1">
+  <label>IP2Locationpy Health</label>  
+  <row>
+    <panel>
+      <title>DB Status</title>
+      <table>
+        <search>
+          <query>index=_internal sourcetype="ip2locationpy:log" db_bin=* | stats latest(size) as size latest(mtime) as mtime latest(exists) as fileexists by host db_bin | eval sizeMB=size/1024/1024, htime=strftime(mtime,"%Y-%m-%d %H:%M:%S") |sort host db</query>
+          <earliest>-31d@d</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">20</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+    <panel>
+      <title>Where is google DNS</title>
+      <table>
+        <search>
+          <query>| makeresults | eval src="8.8.8.8" | `ip2locationpy(src,src)` | fields - _time | transpose | rename column as field</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">30</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <event>
+        <title>Updater events</title>
+        <search>
+          <query>index=_internal source="*ip2locationpy*.log"</query>
+          <earliest>-7d@d</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="list.drilldown">none</option>
+      </event>
+    </panel>
+  </row>
+</dashboard>

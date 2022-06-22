@@ -1,0 +1,56 @@
+{
+  "dependencies": null,
+  "incompatibleApps": null,
+  "info": {
+    "author": [
+      {
+        "name": "asterixwhiz",
+        "email": null,
+        "company": null
+      }
+    ],
+    "classification": {
+      "categories": [],
+      "developmentStatus": null,
+      "intendedAudience": null
+    },
+    "commonInformationModels": null,
+    "description": "Enhanced IP Location lookup for select ip2location DBs",
+    "id": {
+      "group": null,
+      "name": "ip2locationpy",
+      "version": "1.0.0"
+    },
+    "privacyPolicy": {
+      "name": null,
+      "text": null,
+      "uri": null
+    },
+    "releaseDate": null,
+    "releaseNotes": {
+      "name": "README.txt",
+      "text": "./README.txt",
+      "uri": null
+    },
+    "title": "IP2Locationpy"
+  },
+  "inputGroups": null,
+  "platformRequirements": {
+    "splunk": {
+      "Enterprise": "*"
+    }
+  },
+  "schemaVersion": "1.0.0",
+  "targetWorkloads": [
+    "_search_heads"
+  ],
+  "tasks": [
+    "ip2locationpyupdate",
+    "ip2locationpyupdate://IP2LOCATION_GEO",
+    "ip2locationpyupdate://IP2LOCATION_PROXY"
+  ],
+  "supportedDeployments": [
+    "_standalone",
+    "_distributed"
+  ]
+}
