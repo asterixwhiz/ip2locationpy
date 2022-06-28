@@ -32,6 +32,6 @@ Built to work with:
 | NOOP | stats count | EVAL src="8.8.4.4" | `ip2locationpy(src)`
 ```
 
-#Licensing
+# Licensing and Attribution
 
 * Modify this Splunk App code to adheard to any licensing or attribution requirements.
